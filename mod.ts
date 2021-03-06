@@ -1,7 +1,9 @@
 import * as qs from 'https://deno.land/std@0.89.0/node/querystring.ts'
 import { ServerRequest } from 'https://deno.land/std@0.89.0/http/server.ts'
 
-export const bodyParser = async (req: ServerRequest) => {
+type Req = Pick<ServerRequest, 'body'>
+
+export const bodyParser = async (req: Req) => {
   const buf = await Deno.readAll(req.body)
 
   const dec = new TextDecoder()
@@ -11,16 +13,19 @@ export const bodyParser = async (req: ServerRequest) => {
   return body
 }
 
-export interface ReqWithBody<T = Record<string, unknown>> extends ServerRequest {
+export interface ReqWithBody<T = Record<string, unknown>> extends Req {
   requestBody?: T
 }
 
-type NextFunction = (err?: unknown) => void
+type NextFunction = (err?: Error) => void
 
 export const json = async <T = Record<string, unknown>>(req: ReqWithBody<T>, _?: unknown, next?: NextFunction) => {
   try {
-    const body = JSON.parse(await bodyParser(req))
-    req.requestBody = body
+    const body = await bodyParser(req)
+
+    req.requestBody = JSON.parse(body)
+  } catch (e) {
+    next?.(e)
   } finally {
     next?.()
   }
@@ -34,6 +39,8 @@ export const urlencoded = async (
   try {
     const body = qs.parse(await bodyParser(req))
     req.requestBody = body
+  } catch (e) {
+    next?.(e)
   } finally {
     next?.()
   }
