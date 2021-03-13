@@ -6,6 +6,6 @@ const app = new App<unknown, Request & ReqWithBody>()
 app
   .use(json)
   .post((req, res) => {
-    res.send(req.requestBody || {})
+    res.send(req.parsedBody || {})
   })
   .listen(3000, () => console.log(`Started on :3000`))

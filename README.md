@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)][releases]][releases-page] [![GitHub Workflow Status][gh-actions-img]][github-actions]
 [![Codecov][codecov-badge]][codecov] [![][docs-badge]][docs]
 
-🌌 Tiny body parser for Deno. Port of [milliparsec](https://github.com/talentlessguy/milliparsec) library.
+🌌 Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.
 
 ## Usage
 
@@ -11,7 +11,7 @@
 
 ```ts
 import { serve } from 'https://deno.land/std@0.89.0/http/server.ts'
-import { json, ReqWithBody } from 'https://deno.land/x/parsec.ts'
+import { json, ReqWithBody } from 'https://deno.land/x/parsec/mod.ts'
 
 const s = serve({ port: 3000 })
 
@@ -30,7 +30,7 @@ for await (const req of s) {
 
 ```ts
 import { App, Request } from 'https://deno.land/x/tinyhttp/mod.ts'
-import { json, ReqWithBody } from 'https://deno.land/x/parsec.ts'
+import { json, ReqWithBody } from 'https://deno.land/x/parsec/mod.ts'
 
 const app = new App<unknown, Request & ReqWithBody>()
 
@@ -40,6 +40,28 @@ app
     res.send(req.requestBody || {})
   })
   .listen(3000, () => console.log(`Started on :3000`))
+```
+
+## Opine
+
+```ts
+import { opine } from 'https://deno.land/x/opine/mod.ts'
+import { json } from 'https://deno.land/x/parsec/mod.ts'
+
+const app = opine()
+
+app
+  .use(json)
+  .post('/', (req, res) => {
+    res.send(req.parsedBody || {})
+  })
+  .listen(3000, () => console.log(`Started on :3000`))
+```
+
+Then run:
+
+```sh
+curl -X POST localhost:3000 -d '{ "abc": "def" }' -H "Content-Type: application/json"
 ```
 
 [license]: https://github.com/deno-libs/parsec/blob/master/LICENSE
