@@ -7,10 +7,10 @@ export interface ReqWithBody<T = Record<string, unknown>> extends Req {
   parsedBody?: T
 }
 
+const dec = new TextDecoder()
+
 export const bodyParser = <T>(fn: (body: string) => T) => async (req: ReqWithBody<T>) => {
   const buf = await Deno.readAll(req.body)
-
-  const dec = new TextDecoder()
 
   const body = dec.decode(buf)
 
