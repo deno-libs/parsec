@@ -1,9 +1,9 @@
-# parsec
+# parsec 🌌
 
 [![GitHub release (latest by date)][releases]][releases-page] [![GitHub Workflow Status][gh-actions-img]][github-actions]
 [![Codecov][codecov-badge]][codecov] [![][docs-badge]][docs]
 
-🌌 Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.
+Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.
 
 ## Usage
 
@@ -64,7 +64,6 @@ Then run:
 curl -X POST localhost:3000 -d '{ "abc": "def" }' -H "Content-Type: application/json"
 ```
 
-[license]: https://github.com/deno-libs/parsec/blob/master/LICENSE
 [releases]: https://img.shields.io/github/v/release/deno-libs/parsec?style=flat-square
 [docs-badge]: https://img.shields.io/github/v/release/deno-libs/parsec?color=yellow&label=Documentation&logo=deno&style=flat-square
 [docs]: https://doc.deno.land/https/deno.land/x/parsec/mod.ts
