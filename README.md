@@ -5,7 +5,17 @@
 
 Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.
 
-## Usage
+## API
+
+### `json(req)`
+
+Parse a request with JSON body and `Content-Type`: `application/json` header.
+
+### `urlencoded(req)`
+
+Parse a form with the body and `Content-Type`: `application/x-www-urlencoded` header.
+
+## Examples
 
 ### Vanilla
 
