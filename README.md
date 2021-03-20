@@ -8,7 +8,7 @@ Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentle
 ## Features
 
 - supports JSON and urlencoded body parsing
-- parses only when Content-Type header matches the parser's type
+- parses only when `Content-Type` header matches the parser's type
 
 ## Examples
 
