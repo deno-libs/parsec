@@ -5,6 +5,11 @@
 
 Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.
 
+## Features
+
+- supports JSON and urlencoded body parsing
+- parses only when Content-Type header matches the parser's type
+
 ## Examples
 
 ### Vanilla
