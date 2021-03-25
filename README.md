@@ -9,6 +9,7 @@ Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentle
 
 - supports JSON and urlencoded body parsing
 - parses only when `Content-Type` header matches the parser's type
+- custom callback function
 
 ## Examples
 
@@ -21,7 +22,10 @@ import { json, ReqWithBody } from 'https://deno.land/x/parsec/mod.ts'
 const s = serve({ port: 3000 })
 
 for await (const req of s) {
-  await json(req)
+  await json(req, undefined, (err) => {
+    if (err) req.respond({ status: 400, body: err.message })
+    else req.respond({ status: 204 })
+  })
   if (!(req as ReqWithBody).requestBody) {
     req.respond({ status: 404, body: 'No body found' })
   } else {
@@ -47,7 +51,7 @@ app
   .listen(3000, () => console.log(`Started on :3000`))
 ```
 
-## Opine
+## [Opine](https://github.com/asos-craigmorten/opine)
 
 ```ts
 import { opine } from 'https://deno.land/x/opine/mod.ts'
@@ -61,6 +65,25 @@ app
     res.send(req.parsedBody || {})
   })
   .listen(3000, () => console.log(`Started on :3000`))
+```
+
+## [Oak](https://github.com/oakserver/oak)
+
+```ts
+import { Application } from 'https://deno.land/x/oak/mod.ts'
+import { json, ReqWithBody } from 'https://deno.land/x/parsec/mod.ts'
+
+const app = new Application()
+
+app
+  .use((ctx, next) => json(ctx.request.serverRequest, undefined, next))
+  .use((ctx) => {
+    if (ctx.request.method === 'POST') {
+      ctx.response.body = (ctx.request.serverRequest as ReqWithBody).parsedBody
+    }
+  })
+
+await app.listen({ port: 3000 })
 ```
 
 Then run:
