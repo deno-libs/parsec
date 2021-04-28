@@ -1,5 +1,5 @@
-import * as qs from 'https://deno.land/std@0.89.0/node/querystring.ts'
-import { ServerRequest } from 'https://deno.land/std@0.89.0/http/server.ts'
+import * as qs from 'https://deno.land/std@0.95.0/node/querystring.ts'
+import { ServerRequest } from 'https://deno.land/std@0.95.0/http/server.ts'
 
 type Req = Pick<ServerRequest, 'body' | 'headers'>
 

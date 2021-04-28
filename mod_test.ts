@@ -1,5 +1,5 @@
-import { superdeno } from 'https://deno.land/x/superdeno@3.0.0/mod.ts'
-import { ServerRequest, serve } from 'https://deno.land/std@0.88.0/http/server.ts'
+import { superdeno } from 'https://deno.land/x/superdeno@4.2.1/mod.ts'
+import { ServerRequest, serve } from 'https://deno.land/std@0.95.0/http/server.ts'
 import { bodyParser, json, ReqWithBody, urlencoded } from './mod.ts'
 import { describe, it, run } from 'https://deno.land/x/wizard@0.1.3/mod.ts'
 

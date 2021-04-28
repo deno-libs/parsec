@@ -1,6 +1,6 @@
 # parsec 🌌
 
-[![GitHub release (latest by date)][releases]][releases-page] [![GitHub Workflow Status][gh-actions-img]][github-actions]
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/parsec) [![GitHub release (latest by date)][releases]][releases-page] [![GitHub Workflow Status][gh-actions-img]][github-actions]
 [![Codecov][codecov-badge]][codecov] [![][docs-badge]][docs]
 
 Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.

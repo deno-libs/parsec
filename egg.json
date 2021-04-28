@@ -1,0 +1,22 @@
+{
+  "$schema": "https://x.nest.land/eggs@0.3.6/src/schema.json",
+  "name": "parsec",
+  "entry": "./mod.ts",
+  "description": "Tiny body parser for Deno. Port of the milliparsec library.",
+  "homepage": "https://github.com/deno-libs/parsec",
+  "version": "0.0.5",
+  "files": [
+    "mod.ts",
+    "README.md"
+  ],
+  "ignore": [
+    "examples",
+    ".github",
+    "test"
+  ],
+  "checkFormat": false,
+  "checkTests": true,
+  "checkInstallation": true,
+  "check": true,
+  "unlisted": false
+}
