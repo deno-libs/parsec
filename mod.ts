@@ -1,5 +1,6 @@
-import * as qs from 'https://deno.land/std@0.95.0/node/querystring.ts'
-import { ServerRequest } from 'https://deno.land/std@0.95.0/http/server.ts'
+import * as qs from 'https://deno.land/std@0.97.0/node/querystring.ts'
+import { ServerRequest } from 'https://deno.land/std@0.97.0/http/server.ts'
+import { readAll } from 'https://deno.land/std@0.97.0/io/mod.ts'
 
 type Req = Pick<ServerRequest, 'body' | 'headers'>
 
@@ -16,15 +17,17 @@ const dec = new TextDecoder()
  * Universal body parser function
  * @param fn request body formatter
  */
-export const bodyParser = <T>(fn: (body: string) => T) => async (req: ReqWithBody<T>) => {
-  const buf = await Deno.readAll(req.body)
+export const bodyParser =
+  <T>(fn: (body: string) => T) =>
+  async (req: ReqWithBody<T>) => {
+    const buf = await readAll(req.body)
 
-  const body = dec.decode(buf)
+    const body = dec.decode(buf)
 
-  req.parsedBody = fn(body)
+    req.parsedBody = fn(body)
 
-  return req.parsedBody
-}
+    return req.parsedBody
+  }
 
 type NextFunction = (err?: Error) => void
 
