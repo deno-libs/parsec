@@ -1,7 +1,7 @@
 import { superdeno } from 'https://deno.land/x/superdeno@4.2.1/mod.ts'
-import { ServerRequest } from 'https://deno.land/std@0.98.0/http/server.ts'
+import { ServerRequest } from 'https://deno.land/std@0.99.0/http/server.ts'
 import { bodyParser, json, ReqWithBody, urlencoded } from './mod.ts'
-import { describe, it, run } from 'https://deno.land/x/tincan/mod.ts'
+import { describe, it, run } from 'https://deno.land/x/tincan@0.2.1/mod.ts'
 
 describe('bodyParser(req)', () => {
   it('should decode request body', async () => {
