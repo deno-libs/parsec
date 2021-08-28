@@ -1,5 +1,5 @@
 {
-  "$schema": "https://x.nest.land/eggs@0.3.6/src/schema.json",
+  "$schema": "https://x.nest.land/eggs@0.3.8/src/schema.json",
   "name": "parsec",
   "entry": "./mod.ts",
   "description": "Tiny body parser for Deno. Port of the milliparsec library.",
