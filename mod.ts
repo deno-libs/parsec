@@ -1,13 +1,9 @@
-import * as qs from 'https://deno.land/std@0.106.0/node/querystring.ts'
-import { ServerRequest } from 'https://deno.land/std@0.106.0/http/server.ts'
-import { readAll } from 'https://deno.land/std@0.106.0/io/mod.ts'
-
-type Req = Pick<ServerRequest, 'body' | 'headers'>
+import * as qs from 'https://deno.land/std@0.108.0/node/querystring.ts'
 
 /**
  * Request interface extension with additional `parsedBody` property (where parsed body gets stored)
  */
-export interface ReqWithBody<T = Record<string, unknown>> extends Req {
+export interface ReqWithBody<T = Record<string, unknown>> extends Request {
   parsedBody?: T
 }
 
@@ -20,9 +16,7 @@ const dec = new TextDecoder()
 export const bodyParser =
   <T>(fn: (body: string) => T) =>
   async (req: ReqWithBody<T>) => {
-    const buf = await readAll(req.body)
-
-    const body = dec.decode(buf)
+    const body = await req.text()
 
     req.parsedBody = fn(body)
 
