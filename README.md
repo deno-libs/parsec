@@ -15,7 +15,7 @@ Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentle
 [docs-badge]: https://img.shields.io/github/v/release/deno-libs/parsec?color=yellow&label=Documentation&logo=deno&style=flat-square
 [docs]: https://doc.deno.land/https/deno.land/x/parsec/mod.ts
 [releases-page]: https://github.com/deno-libs/parsec/releases
-[gh-actions-img]: https://img.shields.io/github/workflow/status/deno-libs/parsec/CI?style=flat-square
+[gh-actions-img]: https://img.shields.io/github/actions/workflow/status/deno-libs/parsec/main.yml?branch=master&style=flat-square
 [codecov]: https://codecov.io/gh/deno-libs/parsec
 [github-actions]: https://github.com/deno-libs/parsec/actions
 [codecov-badge]: https://img.shields.io/codecov/c/gh/deno-libs/parsec?style=flat-square
