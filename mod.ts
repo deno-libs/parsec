@@ -1,4 +1,4 @@
-import * as qs from 'https://deno.land/std@0.111.0/node/querystring.ts'
+import * as qs from 'https://deno.land/std@0.130.0/node/querystring.ts'
 
 /**
  * Request interface extension with additional `parsedBody` property (where parsed body gets stored)

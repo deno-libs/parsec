@@ -4,7 +4,7 @@
   "entry": "./mod.ts",
   "description": "Tiny body parser for Deno. Port of the milliparsec library.",
   "homepage": "https://github.com/deno-libs/parsec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "files": [
     "mod.ts",
     "README.md"
