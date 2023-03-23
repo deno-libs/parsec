@@ -1,4 +1,4 @@
-import * as qs from 'https://deno.land/std@0.130.0/node/querystring.ts'
+import * as qs from 'https://deno.land/std@0.177.0/node/querystring.ts'
 
 /**
  * Request interface extension with additional `parsedBody` property (where parsed body gets stored)
@@ -6,8 +6,6 @@ import * as qs from 'https://deno.land/std@0.130.0/node/querystring.ts'
 export interface ReqWithBody<T = Record<string, unknown>> extends Request {
   parsedBody?: T
 }
-
-const dec = new TextDecoder()
 
 /**
  * Universal body parser function
