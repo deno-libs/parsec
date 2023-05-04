@@ -1,5 +1,3 @@
-import * as qs from 'https://deno.land/std@0.177.0/node/querystring.ts'
-
 /**
  * Request interface extension with additional `parsedBody` property (where parsed body gets stored)
  */
@@ -12,8 +10,7 @@ export interface ReqWithBody<T = Record<string, unknown>> extends Request {
  * @param fn request body formatter
  */
 export const bodyParser =
-  <T>(fn: (body: string) => T) =>
-  async (req: ReqWithBody<T>) => {
+  <T>(fn: (body: string) => T) => async (req: ReqWithBody<T>) => {
     const body = await req.text()
 
     req.parsedBody = fn(body)
@@ -29,7 +26,11 @@ type NextFunction = (err?: Error) => void
  * @param _
  * @param next
  */
-export const json = async <T = Record<string, unknown>>(req: ReqWithBody<T>, _?: unknown, next?: NextFunction) => {
+export const json = async <T = Record<string, unknown>>(
+  req: ReqWithBody<T>,
+  _?: unknown,
+  next?: NextFunction,
+) => {
   if (req.headers.get('content-type') === 'application/json') {
     try {
       await bodyParser((x) => JSON.parse(x.toString()))(req)
@@ -48,13 +49,18 @@ export const json = async <T = Record<string, unknown>>(req: ReqWithBody<T>, _?:
  * @param next
  */
 export const urlencoded = async (
-  req: ReqWithBody<Record<string, string | string[]>>,
+  req: ReqWithBody<Record<string, string>>,
   _?: unknown,
-  next?: NextFunction
+  next?: NextFunction,
 ) => {
   if (req.headers.get('content-type') === 'application/x-www-form-urlencoded') {
     try {
-      await bodyParser((x) => qs.parse(x.toString()))(req)
+      await bodyParser((x) => {
+        const u = new URLSearchParams(x.toString())
+        const p: Record<string, string> = {}
+        for (const [k, v] of u.entries()) p[k] = v
+        return p
+      })(req)
     } catch (e) {
       next?.(e)
     } finally {

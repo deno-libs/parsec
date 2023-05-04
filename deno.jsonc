@@ -1,0 +1,13 @@
+{
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "semiColons": false
+  },
+  "tasks": {
+    "test": "deno test --allow-net --coverage=coverage",
+    "cov": "deno coverage coverage --lcov > coverage.lcov"
+  }
+}
