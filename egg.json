@@ -4,7 +4,7 @@
   "entry": "./mod.ts",
   "description": "Tiny body parser for Deno. Port of the milliparsec library.",
   "homepage": "https://github.com/deno-libs/parsec",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "files": [
     "mod.ts",
     "README.md"
@@ -14,12 +14,11 @@
     ".github",
     "test"
   ],
-  "checkFormat": false,
+  "checkFormat": true,
   "checkTests": true,
   "checkInstallation": true,
   "check": true,
   "unlisted": false,
   "checkAll": true,
-  "repository": "https://github.com/deno-libs/parsec",
-  "releaseType": "patch"
+  "repository": "https://github.com/deno-libs/parsec"
 }

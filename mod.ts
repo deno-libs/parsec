@@ -57,9 +57,7 @@ export const urlencoded = async (
     try {
       await bodyParser((x) => {
         const u = new URLSearchParams(x.toString())
-        const p: Record<string, string> = {}
-        for (const [k, v] of u.entries()) p[k] = v
-        return p
+        return Object.fromEntries(u.entries())
       })(req)
     } catch (e) {
       next?.(e)
