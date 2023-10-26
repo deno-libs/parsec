@@ -3,10 +3,6 @@
 [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/parsec) [![GitHub release (latest by date)][releases]][releases-page] [![GitHub Workflow Status][gh-actions-img]][github-actions]
 [![Codecov][codecov-badge]][codecov] [![][docs-badge]][docs]
 
-> I'm building [Flash](https://flash-dev.vercel.app) - a service to deploy websites and apps on the new decentralized stack.
->
-> If you'd like to try or collab, [dm](https://t.me/v_1rtl) or [email](mailto:yo@v1rtl.site)
-
 Tiny body parser for Deno. Port of the [milliparsec](https://github.com/talentlessguy/milliparsec) library.
 
 ## Features
